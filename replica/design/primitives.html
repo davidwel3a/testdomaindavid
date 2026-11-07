@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Listening UI — Design primitives</title>
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    body { min-height:100vh; padding:32px; }
+    main { max-width:var(--layout-content-max); margin:auto; display:grid; gap:24px; }
+    section { padding:24px; background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-lg); }
+    h1 { font-size:var(--text-display); line-height:var(--line-display); margin:0; }
+    h2 { font-size:var(--text-lg); margin:0 0 16px; }
+    p, small { color:var(--color-text-muted); }
+    .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+    button, input { font:inherit; }
+    button { min-height:40px; border:1px solid var(--color-border); border-radius:var(--radius-md); padding:8px 16px; color:var(--color-text); background:var(--color-surface-raised); cursor:pointer; transition:transform var(--motion-fast) var(--motion-ease), background var(--motion-fast) var(--motion-ease); }
+    button:hover { background:#343a3f; } button:active { transform:scale(.98); }
+    button.primary { background:var(--color-accent); color:var(--color-on-accent); border-color:var(--color-accent); font-weight:600; }
+    button.danger { color:var(--color-danger); } button:disabled { opacity:.5; cursor:not-allowed; }
+    input { height:44px; width:min(100%,420px); border-radius:var(--radius-md); border:1px solid var(--color-border-input); background:var(--color-bg); padding:0 12px; color:var(--color-text); }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; }
+    .card { padding:16px; border-radius:var(--radius-md); background:var(--color-surface-raised); box-shadow:var(--shadow-card); }
+    .art { aspect-ratio:1; border-radius:var(--radius-sm); background:linear-gradient(135deg,#39434a,#17191b); display:grid; place-items:center; color:var(--color-text-muted); font-size:32px; }
+    .track { display:grid; grid-template-columns:40px 1fr auto; gap:12px; align-items:center; padding:10px; border-radius:var(--radius-sm); }
+    .track:hover, .track:focus-within { background:var(--color-surface-raised); }
+    .track button { min-height:36px; padding:6px 10px; }
+    .title { color:var(--color-text); } .meta { color:var(--color-text-muted); font-size:var(--text-sm); }
+    .player { display:grid; grid-template-columns:1fr 2fr 1fr; gap:20px; align-items:center; background:var(--color-bg); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:14px; }
+    input[type=range] { width:100%; height:22px; accent-color:var(--color-accent); padding:0; }
+    .notice { padding:12px 16px; border-left:3px solid var(--color-success); background:var(--color-surface-raised); border-radius:var(--radius-sm); }
+    .notice.error { border-color:var(--color-danger); }
+    @media(max-width:700px) { body {padding:16px;} .player {grid-template-columns:1fr; gap:10px;} h1 {font-size:28px;line-height:34px;} section {padding:16px;} }
+  </style>
+</head>
+<body>
+<main>
+  <header><p>DESIGN PRIMITIVES / V1</p><h1>Listening, made clear.</h1><p>Neutral component states for a rights-cleared music library.</p></header>
+  <section><h2>Buttons and search</h2><div class="row"><button class="primary">Play collection</button><button>Save track</button><button class="danger">Remove</button><button disabled>Unavailable</button><label><span class="meta">Search the library</span><br><input type="search" placeholder="Songs, artists, collections"></label></div></section>
+  <section><h2>Content cards</h2><div class="cards"><article class="card"><div class="art" aria-hidden="true">♫</div><p class="title">Late night focus</p><small>Collection · 24 tracks</small></article><article class="card"><div class="art" aria-hidden="true">♪</div><p class="title">Quiet mornings</p><small>Album · North Window</small></article><article class="card"><div class="art" aria-hidden="true">◖</div><p class="title">No matches yet</p><small>Try a different search</small></article></div></section>
+  <section><h2>Track rows</h2><div class="track"><button aria-label="Play Paper Lanterns by June Vale">▶</button><div><div class="title">Paper Lanterns</div><div class="meta">June Vale · Small Hours</div></div><button aria-label="Save Paper Lanterns">＋</button></div><div class="track"><button aria-label="Pause Glass Shore by Ansel Reed">Ⅱ</button><div><div class="title">Glass Shore</div><div class="meta">Ansel Reed · Low Tide · Now playing</div></div><button aria-label="More actions for Glass Shore">•••</button></div></section>
+  <section><h2>Persistent player</h2><div class="player"><div><div class="title">Glass Shore</div><div class="meta">Ansel Reed</div></div><div><div class="row" style="justify-content:center"><button aria-label="Previous track">|◀</button><button class="primary" aria-label="Pause">Ⅱ</button><button aria-label="Next track">▶|</button></div><div class="row"><span class="meta">1:12</span><input aria-label="Playback position" type="range" min="0" max="240" value="72"><span class="meta">4:00</span></div></div><div class="row"><button aria-label="Toggle shuffle">Shuffle</button><button aria-label="Open queue">Queue</button></div></div></section>
+  <section><h2>Queue and feedback states</h2><p class="meta">Up next</p><div class="track"><span aria-hidden="true">⋮⋮</span><div><div class="title">Soft Current</div><div class="meta">June Vale</div></div><button aria-label="Remove Soft Current from queue">×</button></div><p class="meta">Your queue is clear. Add a track to keep listening.</p><div class="row"><div class="notice" role="status">Saved to your library.</div><div class="notice error" role="alert">This track is currently unavailable.</div></div></section>
+</main>
+</body></html>

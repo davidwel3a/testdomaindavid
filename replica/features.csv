@@ -1,0 +1,25 @@
+feature,area,priority,original,clone,notes
+"Search catalog by track, artist, album, playlist",discovery,must,yes,yes,Local demo catalog search by track artist album; no server catalog
+Browse recommendations and recent listening,discovery,must,yes,partial,Curated sample shelves and locally stored recent items; no personalized recommender
+Play and pause current item,playback,must,yes,partial,Generated Web Audio tone stands in for licensed recordings
+Skip previous and next items,playback,must,yes,yes,Works across sample items
+Seek within current track,playback,should,yes,partial,Progress can be changed; generated tone is not a recording
+View and modify upcoming queue,playback,must,yes,partial,"Can append, remove and view items; reorder is not implemented"
+Like/save a track to personal library,library,must,yes,yes,Persists in browser local storage
+"Create, rename and delete playlists",playlists,must,yes,yes,Private browser-local collections
+Add and remove tracks in playlists,playlists,must,yes,partial,Adding works; individual removal is not implemented
+Reorder playlist tracks,playlists,should,yes,no,Not implemented
+Add a track to a chosen playlist,playlists,must,yes,yes,In-app collection chooser
+"Now Playing with artwork, metadata and playback state",playback,must,yes,partial,Original abstract art and simulated progress; no recording stream
+Shuffle and repeat controls,playback,should,yes,yes,Single-item shuffle and repeat modes work in demo
+Show current item and next items in queue,playback,must,yes,yes,Current item and queue drawer with empty/populated states
+Resume from recently played items,library,should,yes,yes,Recent items persist in local storage
+Responsive web navigation and persistent player,shell,must,yes,partial,Responsive rules implemented; viewport verification not captured
+OAuth or email account sign-in,identity,should,yes,partial,Server-side Supabase email signup login recovery and sessions are implemented; project configuration and live verification remain
+Collaborative playlists,sharing,could,yes,no,Requires multi-user permissions and concurrent updates
+Spotify Connect cross-device playback,integrations,skip,yes,skip,Spotify-specific device ecosystem; implement only own device handoff later
+Offline downloads of Spotify catalog,playback,skip,yes,skip,Requires licensed audio delivery and offline rights; do not copy Spotify content
+Spotify catalog,licensed content,skip,yes,skip,Licensed music recordings and catalog are not cloneable assets
+Proprietary Spotify recommendations,discovery,skip,yes,skip,Spotify's model and listening data are out of scope; build independent recommendations
+Spotify Premium billing and partner bundles,monetization,skip,yes,skip,Commercial subscriptions and partner contracts are Spotify-specific
+Spotify branding and original artwork,brand,skip,yes,skip,Use a distinct brand and original or licensed visuals
